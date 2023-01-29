@@ -126,8 +126,8 @@ namespace Assignment1
 
 
 
-            String choice = "";
-            bool keepRunning = true;
+            String choice;
+            bool keepRunning;
             MyChoices choices = new MyChoices();
 
 
