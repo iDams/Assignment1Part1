@@ -89,7 +89,7 @@ namespace Assignment1
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("Invalid choice insert a number");
+                        Console.WriteLine("Invalid choice insert an integer");
                         continue;
                     }
 
