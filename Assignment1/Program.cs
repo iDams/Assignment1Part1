@@ -19,11 +19,14 @@ namespace Assignment1
             MilkBags
         }
 
+
+        // method to display the menu
         static void Menu()
         {
             var values = Enum.GetValues(typeof(MyChoices));
 
 
+            // loop to display the menu
             foreach (MyChoices choice2 in values)
             {
 
@@ -36,6 +39,7 @@ namespace Assignment1
             Console.WriteLine("Enter your choice");
         }
 
+        // method to display the welcome message
         static void Welcome()
         {
             Console.WriteLine("-----------------------------");
@@ -44,6 +48,7 @@ namespace Assignment1
             Console.WriteLine("-----------------------------");
         }
 
+        // method to validate the weight or bags
         static double ValidateWeightOrBag(Boolean isWeight)
         {
 
@@ -53,6 +58,7 @@ namespace Assignment1
                 {
                     Console.WriteLine("Insert weight");
                     try
+                    // try to parse the input to double
                     {
                         double value = double.Parse(Console.ReadLine());
                         if (value <= 0)
@@ -72,6 +78,8 @@ namespace Assignment1
                     }
                 }
                 else
+
+                // try to parse the input to int
                 {
                     Console.WriteLine("Number of bags");
                     try
@@ -104,6 +112,8 @@ namespace Assignment1
 
         static void Main(string[] args)
         {
+
+            // variables
             double chillies = 1.29;
             double tomatoes = 1.45;
             double apples = 1.75;
@@ -130,11 +140,13 @@ namespace Assignment1
             bool keepRunning;
             MyChoices choices = new MyChoices();
 
-
+            // loop to keep the program running
             do
             {
                 Welcome();
                 Menu();
+
+                // try to parse the input to enum
                 try
                 {
                     choice = Console.ReadLine();
@@ -146,15 +158,18 @@ namespace Assignment1
                     keepRunning = true;
                     continue;
                 }
-
+                // if enter done but no item selected display a message
                 if (choice == "done" && totalChillies == 0 && totalTomatoes == 0 && totalApples == 0 && totalMilk == 0)
                 {
                     Console.Clear();
                     Console.WriteLine("!!! You have not selected any item !!!");
                     Console.WriteLine("");
                     keepRunning = true;
-                } else
+                }
+                else
                 {
+
+                    // if the choice is done display the final value
                     if (choice == "done")
                     {
                         Console.Clear();
@@ -167,7 +182,7 @@ namespace Assignment1
                             Console.WriteLine("Do you have a scene card? (yes/no)");
                             sceneCard = Console.ReadLine();
                         }
-
+                        // if the user has a scene card apply the discount
                         if (sceneCard == "yes")
                         {
                             subtotalChillies = 90 * (totalChillies * chillies) / 100;
@@ -177,6 +192,7 @@ namespace Assignment1
                             totalSceneCardPoint = (totalChillies + totalTomatoes + totalApples) * 20;
                             subtotal = subtotalChillies + subtotalTomatoes + subtotalApples + subtotalMilk;
                         }
+                        // if the user does not have a scene card apply the normal price
                         else if (sceneCard == "no")
                         {
                             subtotalChillies += totalChillies * chillies;
@@ -189,13 +205,14 @@ namespace Assignment1
                         Console.WriteLine("Do you want to buy bags? (yes/no)");
                         string bags = Console.ReadLine();
 
+                        //if the user wants to buy bags
                         while (bags != "yes" && bags != "no")
                         {
                             Console.WriteLine("Invalid choice");
                             Console.WriteLine("Do you want to buy bags? (yes/no)");
                             bags = Console.ReadLine();
                         }
-
+                        // if input is yes ask how many bags
                         if (bags == "yes")
                         {
                             Console.WriteLine("How many bags do you want?");
@@ -206,7 +223,7 @@ namespace Assignment1
 
 
                         Console.Clear();
-
+                        // display the final value
                         if (totalMilk > 0)
                         {
                             Console.WriteLine(MyChoices.MilkBags);
@@ -251,7 +268,7 @@ namespace Assignment1
 
 
                         bool next = true;
-
+                        // switch to check the input and assign the value to the enum
                         switch (choice.ToLower())
                         {
                             case "chillies":
@@ -282,6 +299,8 @@ namespace Assignment1
                         if (next)
                         {
                             keepRunning = true;
+
+                            // switch to check the enum and save the value
                             switch (choices)
                             {
                                 case MyChoices.Chillies:
